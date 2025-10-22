@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster - Task Management Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #0f1419;
+            color: #e8eaed;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 100vh;
+            background: #1a1f26;
+            border-right: 1px solid #2d3540;
+            padding: 2rem 0;
+            z-index: 100;
+        }
+
+        .logo {
+            padding: 0 1.5rem 2rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #5b8def;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-title {
+            padding: 0 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+
+        .nav-item {
+            padding: 0.75rem 1.5rem;
+            color: #9ca3af;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: #252b35;
+            color: #e8eaed;
+        }
+
+        .nav-item svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 260px;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e8eaed;
+            letter-spacing: -0.02em;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.7rem 1.4rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #5b8def;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #4a7dd9;
+        }
+
+        .btn-secondary {
+            background: #252b35;
+            color: #e8eaed;
+            border: 1px solid #2d3540;
+        }
+
+        .btn-secondary:hover {
+            background: #2d3540;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: #1a1f26;
+            border: 1px solid #2d3540;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .stat-card:hover {
+            border-color: #3d4550;
+            transform: translateY(-2px);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        .stat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-icon.blue {
+            background: rgba(91, 141, 239, 0.15);
+        }
+
+        .stat-icon.purple {
+            background: rgba(168, 85, 247, 0.15);
+        }
+
+        .stat-icon.green {
+            background: rgba(34, 197, 94, 0.15);
+        }
+
+        .stat-icon.orange {
+            background: rgba(251, 146, 60, 0.15);
+        }
+
+        .stat-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e8eaed;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-change {
+            font-size: 0.8rem;
+            color: #22c55e;
+        }
+
+        /* Task Section */
+        .task-section {
+            background: #1a1f26;
+            border: 1px solid #2d3540;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .task-header h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #e8eaed;
+        }
+
+        .task-filters {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            color: #9ca3af;
+            border: 1px solid #2d3540;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: #5b8def;
+            color: #ffffff;
+            border-color: #5b8def;
+        }
+
+        .filter-btn:hover:not(.active) {
+            background: #252b35;
+        }
+
+        /* Task Input */
+        .task-input-container {
+            margin-bottom: 2rem;
+        }
+
+        .task-input-wrapper {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .task-input {
+            flex: 1;
+            padding: 0.9rem 1.2rem;
+            background: #252b35;
+            border: 1px solid #2d3540;
+            border-radius: 8px;
+            color: #e8eaed;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .task-input:focus {
+            outline: none;
+            border-color: #5b8def;
+            background: #2d3540;
+        }
+
+        .task-input::placeholder {
+            color: #6b7280;
+        }
+
+        .priority-select {
+            padding: 0.9rem 1.2rem;
+            background: #252b35;
+            border: 1px solid #2d3540;
+            border-radius: 8px;
+            color: #e8eaed;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .priority-select:focus {
+            outline: none;
+            border-color: #5b8def;
+        }
+
+        /* Task List */
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .task-item {
+            background: #252b35;
+            border: 1px solid #2d3540;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.2s;
+        }
+
+        .task-item:hover {
+            border-color: #3d4550;
+        }
+
+        .task-item.completed {
+            opacity: 0.6;
+        }
+
+        .task-item.completed .task-text {
+            text-decoration: line-through;
+            color: #6b7280;
+        }
+
+        .task-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #3d4550;
+            border-radius: 6px;
+            cursor: pointer;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .task-checkbox:hover {
+            border-color: #5b8def;
+        }
+
+        .task-checkbox.checked {
+            background: #5b8def;
+            border-color: #5b8def;
+        }
+
+        .task-checkbox svg {
+            width: 14px;
+            height: 14px;
+            stroke: #ffffff;
+            display: none;
+        }
+
+        .task-checkbox.checked svg {
+            display: block;
+        }
+
+        .task-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .task-text {
+            color: #e8eaed;
+            font-size: 0.95rem;
+        }
+
+        .task-priority {
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .priority-high {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+
+        .priority-medium {
+            background: rgba(251, 146, 60, 0.15);
+            color: #fb923c;
+        }
+
+        .priority-low {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+        }
+
+        .task-delete {
+            padding: 0.5rem;
+            background: transparent;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .task-delete:hover {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+
+        .task-delete svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #6b7280;
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            stroke: #3d4550;
+            margin: 0 auto 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .task-input-wrapper {
+                flex-direction: column;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .task-filters {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">TaskMaster</div>
+        <nav>
+            <div class="nav-section">
+                <div class="nav-title">Menu</div>
+                <div class="nav-item active">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    Dashboard
+                </div>
+                <div class="nav-item">
+                    <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    Tasks
+                </div>
+                <div class="nav-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Projects
+                </div>
+                <div class="nav-item">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    Analytics
+                </div>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">Settings</div>
+                <div class="nav-item">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6"/></svg>
+                    Preferences
+                </div>
+                <div class="nav-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    Profile
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Export
+                </button>
+                <button class="btn btn-primary" onclick="focusTaskInput()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    New Task
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-label">Total Tasks</span>
+                    <div class="stat-icon blue">
+                        <svg viewBox="0 0 24 24" stroke="#5b8def"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    </div>
+                </div>
+                <div class="stat-value" id="totalTasks">0</div>
+                <div class="stat-change">All tasks</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-label">Completed</span>
+                    <div class="stat-icon green">
+                        <svg viewBox="0 0 24 24" stroke="#22c55e"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                </div>
+                <div class="stat-value" id="completedTasks">0</div>
+                <div class="stat-change">Tasks done</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-label">In Progress</span>
+                    <div class="stat-icon purple">
+                        <svg viewBox="0 0 24 24" stroke="#a855f7"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                </div>
+                <div class="stat-value" id="activeTasks">0</div>
+                <div class="stat-change">Active tasks</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-label">Completion Rate</span>
+                    <div class="stat-icon orange">
+                        <svg viewBox="0 0 24 24" stroke="#fb923c"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                    </div>
+                </div>
+                <div class="stat-value" id="completionRate">0%</div>
+                <div class="stat-change">Success rate</div>
+            </div>
+        </div>
+
+        <!-- Task Section -->
+        <section class="task-section">
+            <div class="task-header">
+                <h2>Your Tasks</h2>
+                <div class="task-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+            </div>
+
+            <!-- Task Input -->
+            <div class="task-input-container">
+                <div class="task-input-wrapper">
+                    <input 
+                        type="text" 
+                        id="taskInput" 
+                        class="task-input" 
+                        placeholder="What needs to be done?"
+                        onkeypress="handleTaskInputKeypress(event)"
+                    >
+                    <select id="prioritySelect" class="priority-select">
+                        <option value="low">Low Priority</option>
+                        <option value="medium" selected>Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="addTask()">Add Task</button>
+                </div>
+            </div>
+
+            <!-- Task List -->
+            <div id="taskList" class="task-list">
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 11 12 14 22 4"/>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                    </svg>
+                    <p>No tasks yet. Add your first task above!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let tasks = [];
+        let currentFilter = 'all';
+
+        // Load tasks from memory on page load
+        function init() {
+            updateStats();
+            renderTasks();
+        }
+
+        // Add new task
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const prioritySelect = document.getElementById('prioritySelect');
+            const text = input.value.trim();
+            
+            if (text === '') return;
+            
+            const task = {
+                id: Date.now(),
+                text: text,
+                completed: false,
+                priority: prioritySelect.value,
+                createdAt: new Date()
+            };
+            
+            tasks.unshift(task);
+            input.value = '';
+            
+            updateStats();
+            renderTasks();
+        }
+
+        // Handle Enter key in task input
+        function handleTaskInputKeypress(event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        }
+
+        // Toggle task completion
+        function toggleTask(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                task.completed = !task.completed;
+                updateStats();
+                renderTasks();
+            }
+        }
+
+        // Delete task
+        function deleteTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            updateStats();
+            renderTasks();
+        }
+
+        // Update statistics
+        function updateStats() {
+            const total = tasks.length;
+            const completed = tasks.filter(t => t.completed).length;
+            const active = total - completed;
+            const rate = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            document.getElementById('totalTasks').textContent = total;
+            document.getElementById('completedTasks').textContent = completed;
+            document.getElementById('activeTasks').textContent = active;
+            document.getElementById('completionRate').textContent = rate + '%';
+        }
+
+        // Render tasks
+        function renderTasks() {
+            const taskList = document.getElementById('taskList');
+            
+            let filteredTasks = tasks;
+            if (currentFilter === 'active') {
+                filteredTasks = tasks.filter(t => !t.completed);
+            } else if (currentFilter === 'completed') {
+                filteredTasks = tasks.filter(t => t.completed);
+            }
+            
+            if (filteredTasks.length === 0) {
+                taskList.innerHTML = `
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 11 12 14 22 4"/>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                        </svg>
+                        <p>${currentFilter === 'all' ? 'No tasks yet. Add your first task above!' : `No ${currentFilter} tasks.`}</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            taskList.innerHTML = filteredTasks.map(task => `
+                <div class="task-item ${task.completed ? 'completed' : ''}">
+                    <div class="task-checkbox ${task.completed ? 'checked' : ''}" onclick="toggleTask(${task.id})">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <div class="task-content">
+                        <span class="task-text">${task.text}</span>
+                        <span class="task-priority priority-${task.priority}">${task.priority}</span>
+                    </div>
+                    <button class="task-delete" onclick="deleteTask(${task.id})">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+                            <polyline points="3 6 5 6 21 6"/>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                        </svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Filter tasks
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderTasks();
+            });
+        });
+
+        // Focus task input
+        function focusTaskInput() {
+            document.getElementById('taskInput').focus();
+        }
+
+        // Initialize app
+        init();
+
+        // Add some sample tasks on load
+        setTimeout(() => {
+            tasks = [
+                { id: 1, text: 'Complete project documentation', completed: false, priority: 'high', createdAt: new Date() },
+                { id: 2, text: 'Review pull requests', completed: true, priority: 'medium', createdAt: new Date() },
+                { id: 3, text: 'Update dependencies', completed: false, priority: 'low', createdAt: new Date() },
+                { id: 4, text: 'Design new landing page', completed: false, priority: 'high', createdAt: new Date() },
+                { id: 5, text: 'Fix navigation bug', completed: true, priority: 'medium', createdAt: new Date() }
+            ];
+            updateStats();
+            renderTasks();
+        }, 500);
+    </script>
+</body>
+</html>
