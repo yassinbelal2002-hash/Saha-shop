@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — Saha Skin</title>
+  <meta name="description" content="Explore SAHA's full botanical collection. Egyptian clean beauty serums, moisturisers, cleansers and treatments — formulated in Cairo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/saha.css">
+</head>
+<body>
+
+  <!-- ══ NAVIGATION ══════════════════════════════════════════ -->
+  <nav class="nav" id="main-nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">SAHA</a>
+
+      <div class="nav__links">
+        <a href="shop.html" class="nav__link nav__link--active">Shop</a>
+        <a href="index.html#ingredients" class="nav__link">Ingredients</a>
+        <a href="index.html#ritual" class="nav__link">Rituals</a>
+        <a href="index.html#about" class="nav__link">About</a>
+      </div>
+
+      <div class="nav__actions">
+        <button class="nav__icon-btn" id="nav-cart-btn" aria-label="Open shopping bag">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge" id="cart-count">0</span>
+        </button>
+        <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav__mobile-menu">
+      <a href="shop.html" class="nav__mobile-link">Shop</a>
+      <a href="index.html#ingredients" class="nav__mobile-link">Ingredients</a>
+      <a href="index.html#ritual" class="nav__mobile-link">Rituals</a>
+      <a href="index.html#about" class="nav__mobile-link">About</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ══ PAGE HEADER ═════════════════════════════════════════ -->
+    <header class="shop-header">
+      <div class="container">
+        <p class="eyebrow shop-header__eyebrow fade-up">Shop All</p>
+        <h1 class="shop-header__title fade-up fade-up-delay-1">THE FULL<br>COLLECTION</h1>
+      </div>
+    </header>
+
+    <!-- ══ FILTER + GRID ════════════════════════════════════════ -->
+    <section class="section-pad" style="padding-top:2rem;background:var(--color-bg);">
+      <div class="container">
+
+        <!-- Filter Row -->
+        <div class="filter-row fade-up" role="group" aria-label="Filter products by category">
+          <button class="filter-pill is-active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="serums">Serums</button>
+          <button class="filter-pill" data-filter="moisturisers">Moisturisers</button>
+          <button class="filter-pill" data-filter="cleansers">Cleansers</button>
+          <button class="filter-pill" data-filter="treatments">Treatments</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="shop-grid">
+
+          <!-- Card 1 -->
+          <article class="product-card fade-up" data-category="serums">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfAkcQiCTyweJ4NrwA0C2I-lfVTGyxWjFg0UdLUYfu19YSA5pK1bRgsJtrAF2vo-GCwmoFbQbvFj4QC0rWM7VOXp38wpQYetRMyVQU2S_-7vmmDEgc-b6P0ci3vjhQ4Qhi0DN8vO5ZzESO_z1_7COR_TbsCBLrGa9lsyLZo62qajRdawtKKLnijOky9Cs19QjXr47OEtOzMtch33oa2-z17oi5GtUoivToy2H5IlHDFkJV9hgKx2he5d_Nrd45yDb_O7OHR58uIRhw" alt="Nile Rose Radiance Serum" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(1)" aria-label="Quick add Nile Rose Radiance Serum">Quick Add</button>
+            </div>
+            <a href="product.html">
+              <p class="product-card__category">Serums</p>
+              <h2 class="product-card__name">Nile Rose Radiance Serum</h2>
+              <p class="product-card__price">EGP 480</p>
+            </a>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="product-card fade-up fade-up-delay-1" data-category="moisturisers">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8XGS7Mf3thqVLmtx0ukAxf99URr__G-hcfQAzjApuXHSkTociYpvdQfTnvddhMf48YOLVOYQ6HSq54iHUef2CyuE3rKDN-dh5twWKNpfWhKMBHFdY6oVUgYpDR05wpNFZQ5nJdPnhaPjnIc9B_hY-tgD6-vY162KJ-xvrPmPMA4wkZBkbeREmPyXyn-uWxt-38GPboC1VHOapoWexjhU6dyrtRVqMRGX6EwytqlOwPfiEeH1KE3_VL-gsyJ1i-Jh3eczy_5abTmZc" alt="Desert Dew Barrier Cream" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(2)" aria-label="Quick add Desert Dew Barrier Cream">Quick Add</button>
+            </div>
+            <a href="product.html">
+              <p class="product-card__category">Moisturisers</p>
+              <h2 class="product-card__name">Desert Dew Barrier Cream</h2>
+              <p class="product-card__price">EGP 360</p>
+            </a>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="product-card fade-up fade-up-delay-2" data-category="cleansers">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuArj2AepnD00PjrT3-GOE4NsbK2J8qctsYCD2nhzZ7GtNYgDYloEBw1M5Z-bVI58_IPeyO5BuDoAUTwneDqk0uyniX--qoU4F82GyidCSj1ZCMJofKpONnJvq4ICV9WvcZnxwxScgcb7ckmddTUeJUxKTO6lrdQqTcyZqF7txpjLyL9KUL69uC6YbxyAdlOmRZH-GQIFaokwKUFOft09OoTXyc87TfCV-UuHPnm9XNJCNpOeD3xX5Khq0PAfwy_RHT2dB8gZSMhr-P3" alt="Black Seed Foam Wash" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(3)" aria-label="Quick add Black Seed Foam Wash">Quick Add</button>
+            </div>
+            <a href="product.html">
+              <p class="product-card__category">Cleansers</p>
+              <h2 class="product-card__name">Black Seed Foam Wash</h2>
+              <p class="product-card__price">EGP 290</p>
+            </a>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="product-card fade-up" data-category="treatments">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAknEQcO3ZZHVJv7tZEb4SRIBExevNBtXt4GMEGd1o9BvC9oBfLUDFw5Dkl9IjE3GYDuQ8URYvLj1ipwXSPHabQgwW1gW1iGGt6ZHm_3cNniVLoz9HPhwQOtz6jVQKh9vnxtnnQQdJMvxVY7HGu7CMZayca_uZnVdQ6mphBmCrkAnPlxwFprrN7Znh4UitPfyqLCwtIAUJ3kMsz2R67LMpcO_FW76WIdGtNGsfU-AOP9yonO281LGAunk_H3aO7ng4Svd24wyqQpZO_" alt="Khamsin Exfoliant Mask" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(4)" aria-label="Quick add Khamsin Exfoliant Mask">Quick Add</button>
+            </div>
+            <a href="product.html">
+              <p class="product-card__category">Treatments</p>
+              <h2 class="product-card__name">Khamsin Exfoliant Mask</h2>
+              <p class="product-card__price">EGP 320</p>
+            </a>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="product-card fade-up fade-up-delay-1" data-category="treatments">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRh5myh0bj2gP-jzR044bSoH1tU-CD0PQvM8313UlTUxDxwHoltRErOekgP5_wjzgtydNcY-oIawSGu-V9ocgYkorNDuS4PX1EfZgIaIDEzkU0ABTweP4s-_5t5bVEl0pv3oZBtyvvnUCx-OSVn2aMcNHXO4uYOWfXLaX_A4FfqxAi4G3cHMckSBaRVmFnLbd7NE0HHHwRWNhukCusf5_3Q0UoS-OEzSLVZIrJmbT4q7K_hWBAMzBo98BRUI_PN_F8V-xJE-JSFRst" alt="Lotus Recovery Oil" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(5)" aria-label="Quick add Lotus Recovery Oil">Quick Add</button>
+            </div>
+            <a href="product.html">
+              <p class="product-card__category">Treatments</p>
+              <h2 class="product-card__name">Lotus Recovery Oil</h2>
+              <p class="product-card__price">EGP 520</p>
+            </a>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="product-card fade-up fade-up-delay-2" data-category="treatments">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS2CYi0-ahONS9-DDqPhOYWrrYpkZFf44esxNSrbYb_7JhBuOlRkxX1CmS_Dm5xPO0gOBYpj8hoY1do1fAnKxoUWLM-s27sktn8vyIoHzUoNwuaPYjX8uynj53_F2Ou1JIhAWSi7sreXZbbvGNljorO3BgdHFYTRDOdVm7ei0mA0aWqAil9qTfAb2PJsYrSxlvWzMTYhy04f_crNzhFjIPb24fHKgrqK42hsbI5Fo2Yu6j7bVcQrWBmL8NR8KyXgGMa8aE5gRz-CRA" alt="Calendula Eye Balm" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(6)" aria-label="Quick add Calendula Eye Balm">Quick Add</button>
+            </div>
+            <a href="product.html">
+              <p class="product-card__category">Treatments</p>
+              <h2 class="product-card__name">Calendula Eye Balm</h2>
+              <p class="product-card__price">EGP 240</p>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ═══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__main">
+        <div>
+          <div class="footer__logo">SAHA</div>
+          <p class="footer__blurb">Modern Egyptian beauty inspired by ancient botanical wisdom and the sun-drenched banks of the Nile.</p>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Explore</p>
+          <nav class="footer__links">
+            <a href="shop.html" class="footer__link">Shop</a>
+            <a href="index.html#ingredients" class="footer__link">Ingredients</a>
+            <a href="index.html#about" class="footer__link">About</a>
+            <a href="#" class="footer__link">Contact</a>
+          </nav>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Concierge</p>
+          <nav class="footer__links">
+            <a href="#" class="footer__link">Shipping &amp; Returns</a>
+            <a href="#" class="footer__link">Privacy Policy</a>
+            <a href="#" class="footer__link">Terms of Service</a>
+          </nav>
+        </div>
+
+        <div>
+          <p class="footer__col-title">The Journal</p>
+          <p class="footer__subscribe-label">Join our mailing list for curated rituals and early access.</p>
+          <form class="footer__subscribe-form" onsubmit="return false;">
+            <input type="email" class="footer__subscribe-input" placeholder="Email address" aria-label="Email address">
+            <button type="submit" class="footer__subscribe-btn" aria-label="Subscribe">
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2024 SAHA Egyptian Beauty. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social">Instagram</a>
+          <a href="#" class="footer__social">Pinterest</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

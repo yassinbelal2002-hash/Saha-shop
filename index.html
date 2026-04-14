@@ -1,775 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskMaster - Task Management Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            background: #0f1419;
-            color: #e8eaed;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 260px;
-            height: 100vh;
-            background: #1a1f26;
-            border-right: 1px solid #2d3540;
-            padding: 2rem 0;
-            z-index: 100;
-        }
-
-        .logo {
-            padding: 0 1.5rem 2rem;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #5b8def;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-section {
-            margin-bottom: 2rem;
-        }
-
-        .nav-title {
-            padding: 0 1.5rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #6b7280;
-            margin-bottom: 0.75rem;
-        }
-
-        .nav-item {
-            padding: 0.75rem 1.5rem;
-            color: #9ca3af;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.2s;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background: #252b35;
-            color: #e8eaed;
-        }
-
-        .nav-item svg {
-            width: 18px;
-            height: 18px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: 260px;
-            padding: 2rem;
-            min-height: 100vh;
-        }
-
-        /* Header */
-        .header {
-            margin-bottom: 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #e8eaed;
-            letter-spacing: -0.02em;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.7rem 1.4rem;
-            border-radius: 8px;
-            border: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: #5b8def;
-            color: #ffffff;
-        }
-
-        .btn-primary:hover {
-            background: #4a7dd9;
-        }
-
-        .btn-secondary {
-            background: #252b35;
-            color: #e8eaed;
-            border: 1px solid #2d3540;
-        }
-
-        .btn-secondary:hover {
-            background: #2d3540;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .stat-card {
-            background: #1a1f26;
-            border: 1px solid #2d3540;
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.2s;
-        }
-
-        .stat-card:hover {
-            border-color: #3d4550;
-            transform: translateY(-2px);
-        }
-
-        .stat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: #9ca3af;
-            font-weight: 500;
-        }
-
-        .stat-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .stat-icon.blue {
-            background: rgba(91, 141, 239, 0.15);
-        }
-
-        .stat-icon.purple {
-            background: rgba(168, 85, 247, 0.15);
-        }
-
-        .stat-icon.green {
-            background: rgba(34, 197, 94, 0.15);
-        }
-
-        .stat-icon.orange {
-            background: rgba(251, 146, 60, 0.15);
-        }
-
-        .stat-icon svg {
-            width: 18px;
-            height: 18px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #e8eaed;
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-change {
-            font-size: 0.8rem;
-            color: #22c55e;
-        }
-
-        /* Task Section */
-        .task-section {
-            background: #1a1f26;
-            border: 1px solid #2d3540;
-            border-radius: 12px;
-            padding: 2rem;
-        }
-
-        .task-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .task-header h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #e8eaed;
-        }
-
-        .task-filters {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            color: #9ca3af;
-            border: 1px solid #2d3540;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .filter-btn.active {
-            background: #5b8def;
-            color: #ffffff;
-            border-color: #5b8def;
-        }
-
-        .filter-btn:hover:not(.active) {
-            background: #252b35;
-        }
-
-        /* Task Input */
-        .task-input-container {
-            margin-bottom: 2rem;
-        }
-
-        .task-input-wrapper {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .task-input {
-            flex: 1;
-            padding: 0.9rem 1.2rem;
-            background: #252b35;
-            border: 1px solid #2d3540;
-            border-radius: 8px;
-            color: #e8eaed;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-        }
-
-        .task-input:focus {
-            outline: none;
-            border-color: #5b8def;
-            background: #2d3540;
-        }
-
-        .task-input::placeholder {
-            color: #6b7280;
-        }
-
-        .priority-select {
-            padding: 0.9rem 1.2rem;
-            background: #252b35;
-            border: 1px solid #2d3540;
-            border-radius: 8px;
-            color: #e8eaed;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .priority-select:focus {
-            outline: none;
-            border-color: #5b8def;
-        }
-
-        /* Task List */
-        .task-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .task-item {
-            background: #252b35;
-            border: 1px solid #2d3540;
-            border-radius: 8px;
-            padding: 1rem 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: all 0.2s;
-        }
-
-        .task-item:hover {
-            border-color: #3d4550;
-        }
-
-        .task-item.completed {
-            opacity: 0.6;
-        }
-
-        .task-item.completed .task-text {
-            text-decoration: line-through;
-            color: #6b7280;
-        }
-
-        .task-checkbox {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #3d4550;
-            border-radius: 6px;
-            cursor: pointer;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .task-checkbox:hover {
-            border-color: #5b8def;
-        }
-
-        .task-checkbox.checked {
-            background: #5b8def;
-            border-color: #5b8def;
-        }
-
-        .task-checkbox svg {
-            width: 14px;
-            height: 14px;
-            stroke: #ffffff;
-            display: none;
-        }
-
-        .task-checkbox.checked svg {
-            display: block;
-        }
-
-        .task-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .task-text {
-            color: #e8eaed;
-            font-size: 0.95rem;
-        }
-
-        .task-priority {
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .priority-high {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-        }
-
-        .priority-medium {
-            background: rgba(251, 146, 60, 0.15);
-            color: #fb923c;
-        }
-
-        .priority-low {
-            background: rgba(34, 197, 94, 0.15);
-            color: #22c55e;
-        }
-
-        .task-delete {
-            padding: 0.5rem;
-            background: transparent;
-            border: none;
-            color: #6b7280;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-        }
-
-        .task-delete:hover {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-        }
-
-        .task-delete svg {
-            width: 18px;
-            height: 18px;
-            stroke: currentColor;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 3rem;
-            color: #6b7280;
-        }
-
-        .empty-state svg {
-            width: 64px;
-            height: 64px;
-            stroke: #3d4550;
-            margin: 0 auto 1rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .main-content {
-                margin-left: 0;
-                padding: 1.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .task-input-wrapper {
-                flex-direction: column;
-            }
-
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .task-filters {
-                flex-wrap: wrap;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saha — Egyptian Clean Beauty</title>
+  <meta name="description" content="SAHA is an Egyptian clean beauty brand built on botanical intelligence and radical simplicity. No fillers, no shortcuts — just skin. Formulated in Cairo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/saha.css">
 </head>
 <body>
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="logo">TaskMaster</div>
-        <nav>
-            <div class="nav-section">
-                <div class="nav-title">Menu</div>
-                <div class="nav-item active">
-                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                    Dashboard
-                </div>
-                <div class="nav-item">
-                    <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                    Tasks
-                </div>
-                <div class="nav-item">
-                    <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    Projects
-                </div>
-                <div class="nav-item">
-                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                    Analytics
-                </div>
-            </div>
-            <div class="nav-section">
-                <div class="nav-title">Settings</div>
-                <div class="nav-item">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6"/></svg>
-                    Preferences
-                </div>
-                <div class="nav-item">
-                    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    Profile
-                </div>
-            </div>
-        </nav>
-    </aside>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Header -->
-        <header class="header">
-            <div>
-                <h1>Dashboard</h1>
-            </div>
-            <div class="header-actions">
-                <button class="btn btn-secondary">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Export
-                </button>
-                <button class="btn btn-primary" onclick="focusTaskInput()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                    New Task
-                </button>
-            </div>
-        </header>
+  <!-- ══ NAVIGATION ══════════════════════════════════════════ -->
+  <nav class="nav" id="main-nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">SAHA</a>
 
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-header">
-                    <span class="stat-label">Total Tasks</span>
-                    <div class="stat-icon blue">
-                        <svg viewBox="0 0 24 24" stroke="#5b8def"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                    </div>
-                </div>
-                <div class="stat-value" id="totalTasks">0</div>
-                <div class="stat-change">All tasks</div>
-            </div>
+      <div class="nav__links">
+        <a href="shop.html" class="nav__link">Shop</a>
+        <a href="#ingredients" class="nav__link">Ingredients</a>
+        <a href="#ritual" class="nav__link">Rituals</a>
+        <a href="#about" class="nav__link">About</a>
+      </div>
 
-            <div class="stat-card">
-                <div class="stat-header">
-                    <span class="stat-label">Completed</span>
-                    <div class="stat-icon green">
-                        <svg viewBox="0 0 24 24" stroke="#22c55e"><polyline points="20 6 9 17 4 12"/></svg>
-                    </div>
-                </div>
-                <div class="stat-value" id="completedTasks">0</div>
-                <div class="stat-change">Tasks done</div>
-            </div>
+      <div class="nav__actions">
+        <button class="nav__icon-btn" id="nav-cart-btn" aria-label="Open shopping bag">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge" id="cart-count">0</span>
+        </button>
+        <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
 
-            <div class="stat-card">
-                <div class="stat-header">
-                    <span class="stat-label">In Progress</span>
-                    <div class="stat-icon purple">
-                        <svg viewBox="0 0 24 24" stroke="#a855f7"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    </div>
-                </div>
-                <div class="stat-value" id="activeTasks">0</div>
-                <div class="stat-change">Active tasks</div>
-            </div>
+    <!-- Mobile menu -->
+    <div class="nav__mobile-menu">
+      <a href="shop.html" class="nav__mobile-link">Shop</a>
+      <a href="#ingredients" class="nav__mobile-link">Ingredients</a>
+      <a href="#ritual" class="nav__mobile-link">Rituals</a>
+      <a href="#about" class="nav__mobile-link">About</a>
+    </div>
+  </nav>
 
-            <div class="stat-card">
-                <div class="stat-header">
-                    <span class="stat-label">Completion Rate</span>
-                    <div class="stat-icon orange">
-                        <svg viewBox="0 0 24 24" stroke="#fb923c"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                    </div>
-                </div>
-                <div class="stat-value" id="completionRate">0%</div>
-                <div class="stat-change">Success rate</div>
-            </div>
+  <main>
+
+    <!-- ══ HERO ════════════════════════════════════════════════ -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="eyebrow hero__eyebrow fade-up">Cairo · Clean Beauty</p>
+          <h1 class="hero__headline fade-up fade-up-delay-1">SKIN THAT<br>SPEAKS FOR<br>ITSELF.</h1>
+          <p class="hero__sub fade-up fade-up-delay-2">Saha is an Egyptian clean beauty brand built on botanical intelligence and radical simplicity. No fillers. No shortcuts. Just skin.</p>
+          <div class="hero__ctas fade-up fade-up-delay-3">
+            <a href="shop.html" class="btn btn--primary btn--lg">Shop the Collection</a>
+            <a href="#ritual" class="btn btn--ghost btn--lg">Our Rituals</a>
+          </div>
+        </div>
+        <div class="hero__image-wrap fade-up fade-up-delay-2">
+          <img
+            src="img/hero.png"
+            alt="SAHA hero product — glass amber bottle on desert stone"
+            loading="eager"
+          >
+        </div>
+      </div>
+
+      <div class="hero__badges">
+        <div class="container">
+          <div class="hero__badges-inner">
+            <span class="hero__badge">Cruelty Free</span>
+            <span class="hero__badge">No Parabens</span>
+            <span class="hero__badge">Egypt Made</span>
+            <span class="hero__badge">Dermatologist Tested</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BESTSELLERS ══════════════════════════════════════════ -->
+    <section class="bestsellers section-pad" id="shop">
+      <div class="container">
+        <div class="bestsellers__header">
+          <p class="eyebrow fade-up">The Collection</p>
+          <h2 class="section-title fade-up fade-up-delay-1">BUILT FOR<br>YOUR RITUAL.</h2>
         </div>
 
-        <!-- Task Section -->
-        <section class="task-section">
-            <div class="task-header">
-                <h2>Your Tasks</h2>
-                <div class="task-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="active">Active</button>
-                    <button class="filter-btn" data-filter="completed">Completed</button>
-                </div>
+        <div class="product-grid">
+
+          <!-- Card 1 -->
+          <article class="product-card fade-up" data-category="serums">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfAkcQiCTyweJ4NrwA0C2I-lfVTGyxWjFg0UdLUYfu19YSA5pK1bRgsJtrAF2vo-GCwmoFbQbvFj4QC0rWM7VOXp38wpQYetRMyVQU2S_-7vmmDEgc-b6P0ci3vjhQ4Qhi0DN8vO5ZzESO_z1_7COR_TbsCBLrGa9lsyLZo62qajRdawtKKLnijOky9Cs19QjXr47OEtOzMtch33oa2-z17oi5GtUoivToy2H5IlHDFkJV9hgKx2he5d_Nrd45yDb_O7OHR58uIRhw" alt="Nile Rose Radiance Serum" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(1)" aria-label="Quick add Nile Rose Radiance Serum to cart">Quick Add</button>
             </div>
+            <a href="product.html">
+              <p class="product-card__category">Serums</p>
+              <h3 class="product-card__name">Nile Rose Radiance Serum</h3>
+              <p class="product-card__price">EGP 480</p>
+            </a>
+          </article>
 
-            <!-- Task Input -->
-            <div class="task-input-container">
-                <div class="task-input-wrapper">
-                    <input 
-                        type="text" 
-                        id="taskInput" 
-                        class="task-input" 
-                        placeholder="What needs to be done?"
-                        onkeypress="handleTaskInputKeypress(event)"
-                    >
-                    <select id="prioritySelect" class="priority-select">
-                        <option value="low">Low Priority</option>
-                        <option value="medium" selected>Medium Priority</option>
-                        <option value="high">High Priority</option>
-                    </select>
-                    <button class="btn btn-primary" onclick="addTask()">Add Task</button>
-                </div>
+          <!-- Card 2 -->
+          <article class="product-card fade-up fade-up-delay-1" data-category="moisturisers">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8XGS7Mf3thqVLmtx0ukAxf99URr__G-hcfQAzjApuXHSkTociYpvdQfTnvddhMf48YOLVOYQ6HSq54iHUef2CyuE3rKDN-dh5twWKNpfWhKMBHFdY6oVUgYpDR05wpNFZQ5nJdPnhaPjnIc9B_hY-tgD6-vY162KJ-xvrPmPMA4wkZBkbeREmPyXyn-uWxt-38GPboC1VHOapoWexjhU6dyrtRVqMRGX6EwytqlOwPfiEeH1KE3_VL-gsyJ1i-Jh3eczy_5abTmZc" alt="Desert Dew Barrier Cream" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(2)" aria-label="Quick add Desert Dew Barrier Cream">Quick Add</button>
             </div>
+            <a href="product.html">
+              <p class="product-card__category">Moisturisers</p>
+              <h3 class="product-card__name">Desert Dew Barrier Cream</h3>
+              <p class="product-card__price">EGP 360</p>
+            </a>
+          </article>
 
-            <!-- Task List -->
-            <div id="taskList" class="task-list">
-                <div class="empty-state">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 11 12 14 22 4"/>
-                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-                    </svg>
-                    <p>No tasks yet. Add your first task above!</p>
-                </div>
+          <!-- Card 3 -->
+          <article class="product-card fade-up fade-up-delay-2" data-category="cleansers">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuArj2AepnD00PjrT3-GOE4NsbK2J8qctsYCD2nhzZ7GtNYgDYloEBw1M5Z-bVI58_IPeyO5BuDoAUTwneDqk0uyniX--qoU4F82GyidCSj1ZCMJofKpONnJvq4ICV9WvcZnxwxScgcb7ckmddTUeJUxKTO6lrdQqTcyZqF7txpjLyL9KUL69uC6YbxyAdlOmRZH-GQIFaokwKUFOft09OoTXyc87TfCV-UuHPnm9XNJCNpOeD3xX5Khq0PAfwy_RHT2dB8gZSMhr-P3" alt="Black Seed Foam Wash" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(3)" aria-label="Quick add Black Seed Foam Wash">Quick Add</button>
             </div>
-        </section>
-    </main>
+            <a href="product.html">
+              <p class="product-card__category">Cleansers</p>
+              <h3 class="product-card__name">Black Seed Foam Wash</h3>
+              <p class="product-card__price">EGP 290</p>
+            </a>
+          </article>
 
-    <script>
-        let tasks = [];
-        let currentFilter = 'all';
+          <!-- Card 4 -->
+          <article class="product-card fade-up" data-category="treatments">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAknEQcO3ZZHVJv7tZEb4SRIBExevNBtXt4GMEGd1o9BvC9oBfLUDFw5Dkl9IjE3GYDuQ8URYvLj1ipwXSPHabQgwW1gW1iGGt6ZHm_3cNniVLoz9HPhwQOtz6jVQKh9vnxtnnQQdJMvxVY7HGu7CMZayca_uZnVdQ6mphBmCrkAnPlxwFprrN7Znh4UitPfyqLCwtIAUJ3kMsz2R67LMpcO_FW76WIdGtNGsfU-AOP9yonO281LGAunk_H3aO7ng4Svd24wyqQpZO_" alt="Khamsin Exfoliant Mask" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(4)" aria-label="Quick add Khamsin Exfoliant Mask">Quick Add</button>
+            </div>
+            <a href="product.html">
+              <p class="product-card__category">Treatments</p>
+              <h3 class="product-card__name">Khamsin Exfoliant Mask</h3>
+              <p class="product-card__price">EGP 320</p>
+            </a>
+          </article>
 
-        // Load tasks from memory on page load
-        function init() {
-            updateStats();
-            renderTasks();
-        }
+          <!-- Card 5 -->
+          <article class="product-card fade-up fade-up-delay-1" data-category="treatments">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRh5myh0bj2gP-jzR044bSoH1tU-CD0PQvM8313UlTUxDxwHoltRErOekgP5_wjzgtydNcY-oIawSGu-V9ocgYkorNDuS4PX1EfZgIaIDEzkU0ABTweP4s-_5t5bVEl0pv3oZBtyvvnUCx-OSVn2aMcNHXO4uYOWfXLaX_A4FfqxAi4G3cHMckSBaRVmFnLbd7NE0HHHwRWNhukCusf5_3Q0UoS-OEzSLVZIrJmbT4q7K_hWBAMzBo98BRUI_PN_F8V-xJE-JSFRst" alt="Lotus Recovery Oil" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(5)" aria-label="Quick add Lotus Recovery Oil">Quick Add</button>
+            </div>
+            <a href="product.html">
+              <p class="product-card__category">Treatments</p>
+              <h3 class="product-card__name">Lotus Recovery Oil</h3>
+              <p class="product-card__price">EGP 520</p>
+            </a>
+          </article>
 
-        // Add new task
-        function addTask() {
-            const input = document.getElementById('taskInput');
-            const prioritySelect = document.getElementById('prioritySelect');
-            const text = input.value.trim();
-            
-            if (text === '') return;
-            
-            const task = {
-                id: Date.now(),
-                text: text,
-                completed: false,
-                priority: prioritySelect.value,
-                createdAt: new Date()
-            };
-            
-            tasks.unshift(task);
-            input.value = '';
-            
-            updateStats();
-            renderTasks();
-        }
+          <!-- Card 6 -->
+          <article class="product-card fade-up fade-up-delay-2" data-category="treatments">
+            <div class="product-card__image-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS2CYi0-ahONS9-DDqPhOYWrrYpkZFf44esxNSrbYb_7JhBuOlRkxX1CmS_Dm5xPO0gOBYpj8hoY1do1fAnKxoUWLM-s27sktn8vyIoHzUoNwuaPYjX8uynj53_F2Ou1JIhAWSi7sreXZbbvGNljorO3BgdHFYTRDOdVm7ei0mA0aWqAil9qTfAb2PJsYrSxlvWzMTYhy04f_crNzhFjIPb24fHKgrqK42hsbI5Fo2Yu6j7bVcQrWBmL8NR8KyXgGMa8aE5gRz-CRA" alt="Calendula Eye Balm" loading="lazy">
+              <button class="product-card__quick-add" onclick="cart.addItem(6)" aria-label="Quick add Calendula Eye Balm">Quick Add</button>
+            </div>
+            <a href="product.html">
+              <p class="product-card__category">Treatments</p>
+              <h3 class="product-card__name">Calendula Eye Balm</h3>
+              <p class="product-card__price">EGP 240</p>
+            </a>
+          </article>
 
-        // Handle Enter key in task input
-        function handleTaskInputKeypress(event) {
-            if (event.key === 'Enter') {
-                addTask();
-            }
-        }
+        </div>
 
-        // Toggle task completion
-        function toggleTask(id) {
-            const task = tasks.find(t => t.id === id);
-            if (task) {
-                task.completed = !task.completed;
-                updateStats();
-                renderTasks();
-            }
-        }
+        <div style="text-align:center;margin-top:3.5rem;" class="fade-up">
+          <a href="shop.html" class="btn btn--ghost btn--lg">View Full Collection</a>
+        </div>
+      </div>
+    </section>
 
-        // Delete task
-        function deleteTask(id) {
-            tasks = tasks.filter(t => t.id !== id);
-            updateStats();
-            renderTasks();
-        }
+    <!-- ══ INGREDIENT STORY ═════════════════════════════════════ -->
+    <section class="ingredient-story section-pad" id="ingredients">
+      <div class="container">
+        <div class="ingredient-story__grid">
+          <div class="fade-up">
+            <div class="ingredient-story__image-wrap">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaxTvj2buoOoFM1N6hVQzZiiCVW5mx7zp6c0LLctMsjCuF9GBfX2B_aFoAxnQcnEHc0RScbBPL-WnDiIkZpL7EMEBMlXrpZVPh8vSW5OpDCqR4ZgreIUwb6MRl0Fk4ZnfhGB2f8tUhsv7x_D_XEJuT7mu_6ojgyGuy3oIy1PiFdUlnU-vNpYbyPx2MUTBFjkPh4Od-tnj4_GqSMsZclbcw_OTyYLYdWm4GVjj9JYOB-bhXB156Cm7yQLvP7llMNYrIFMi9KDisi1Q-"
+                alt="Egyptian botanical ingredients — lotus petals and black seeds"
+                loading="lazy"
+              >
+            </div>
+          </div>
 
-        // Update statistics
-        function updateStats() {
-            const total = tasks.length;
-            const completed = tasks.filter(t => t.completed).length;
-            const active = total - completed;
-            const rate = total > 0 ? Math.round((completed / total) * 100) : 0;
-            
-            document.getElementById('totalTasks').textContent = total;
-            document.getElementById('completedTasks').textContent = completed;
-            document.getElementById('activeTasks').textContent = active;
-            document.getElementById('completionRate').textContent = rate + '%';
-        }
+          <div class="ingredient-story__content fade-up fade-up-delay-1">
+            <p class="eyebrow">The Formula</p>
+            <h2 class="section-title" style="margin-block:1rem 0;">EVERY INGREDIENT HAS A REASON.</h2>
+            <p class="ingredient-story__body">We believe in full transparency. Every botanical extract, every mineral, and every cold-pressed oil is chosen for its biological compatibility with your skin. No synthetic fragrances, no harsh preservatives — just pure Egyptian botanical intelligence reviewed by leading dermatologists.</p>
+            <a href="#" class="underline-link">Read our ingredient glossary →</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // Render tasks
-        function renderTasks() {
-            const taskList = document.getElementById('taskList');
-            
-            let filteredTasks = tasks;
-            if (currentFilter === 'active') {
-                filteredTasks = tasks.filter(t => !t.completed);
-            } else if (currentFilter === 'completed') {
-                filteredTasks = tasks.filter(t => t.completed);
-            }
-            
-            if (filteredTasks.length === 0) {
-                taskList.innerHTML = `
-                    <div class="empty-state">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 11 12 14 22 4"/>
-                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-                        </svg>
-                        <p>${currentFilter === 'all' ? 'No tasks yet. Add your first task above!' : `No ${currentFilter} tasks.`}</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            taskList.innerHTML = filteredTasks.map(task => `
-                <div class="task-item ${task.completed ? 'completed' : ''}">
-                    <div class="task-checkbox ${task.completed ? 'checked' : ''}" onclick="toggleTask(${task.id})">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                    </div>
-                    <div class="task-content">
-                        <span class="task-text">${task.text}</span>
-                        <span class="task-priority priority-${task.priority}">${task.priority}</span>
-                    </div>
-                    <button class="task-delete" onclick="deleteTask(${task.id})">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
-                            <polyline points="3 6 5 6 21 6"/>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                        </svg>
-                    </button>
-                </div>
-            `).join('');
-        }
+    <!-- ══ RITUAL STEPS ═════════════════════════════════════════ -->
+    <section class="ritual section-pad" id="ritual">
+      <div class="container">
+        <div class="ritual__header fade-up">
+          <p class="eyebrow" style="margin-bottom:1rem;">How to use SAHA</p>
+          <h2 class="section-title">THE MORNING RITUAL.</h2>
+        </div>
 
-        // Filter tasks
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentFilter = this.dataset.filter;
-                renderTasks();
-            });
-        });
+        <div class="ritual__grid">
+          <div class="fade-up">
+            <div class="ritual-step__number">01</div>
+            <p class="ritual-step__label">Cleanse</p>
+            <h3 class="ritual-step__name">Black Seed Foam Wash</h3>
+            <p class="ritual-step__desc">Gently lift impurities without stripping the natural barrier.</p>
+          </div>
+          <div class="fade-up fade-up-delay-1">
+            <div class="ritual-step__number">02</div>
+            <p class="ritual-step__label">Treat</p>
+            <h3 class="ritual-step__name">Nile Rose Radiance Serum</h3>
+            <p class="ritual-step__desc">Illuminate and refine texture with concentrated rose extracts.</p>
+          </div>
+          <div class="fade-up fade-up-delay-2">
+            <div class="ritual-step__number">03</div>
+            <p class="ritual-step__label">Protect</p>
+            <h3 class="ritual-step__name">Desert Dew Barrier Cream</h3>
+            <p class="ritual-step__desc">Lock in moisture and shield skin from environmental stressors.</p>
+          </div>
+          <div class="fade-up fade-up-delay-3">
+            <div class="ritual-step__number">04</div>
+            <p class="ritual-step__label">Finish</p>
+            <h3 class="ritual-step__name">Lotus Recovery Oil</h3>
+            <p class="ritual-step__desc">Seal the ritual with a lightweight, nutrient-rich oil layer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // Focus task input
-        function focusTaskInput() {
-            document.getElementById('taskInput').focus();
-        }
+    <!-- ══ REVIEWS ══════════════════════════════════════════════ -->
+    <section class="reviews section-pad">
+      <div class="container">
+        <div class="reviews__header fade-up">
+          <p class="eyebrow">What they say</p>
+        </div>
 
-        // Initialize app
-        init();
+        <div class="reviews__grid">
+          <div class="review-card fade-up">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__quote">"The Desert Dew cream is unlike anything I've used. It feels substantial but absorbs instantly. My Cairo commute doesn't stand a chance."</p>
+            <p class="review-card__author">— Nour M.</p>
+          </div>
 
-        // Add some sample tasks on load
-        setTimeout(() => {
-            tasks = [
-                { id: 1, text: 'Complete project documentation', completed: false, priority: 'high', createdAt: new Date() },
-                { id: 2, text: 'Review pull requests', completed: true, priority: 'medium', createdAt: new Date() },
-                { id: 3, text: 'Update dependencies', completed: false, priority: 'low', createdAt: new Date() },
-                { id: 4, text: 'Design new landing page', completed: false, priority: 'high', createdAt: new Date() },
-                { id: 5, text: 'Fix navigation bug', completed: true, priority: 'medium', createdAt: new Date() }
-            ];
-            updateStats();
-            renderTasks();
-        }, 500);
-    </script>
+          <div class="review-card fade-up fade-up-delay-1">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__quote">"Finally, a brand that understands our climate. The Nile Rose serum has cleared my pigmentation in weeks. Truly local luxury."</p>
+            <p class="review-card__author">— Rana K.</p>
+          </div>
+
+          <div class="review-card fade-up fade-up-delay-2">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__quote">"I love the simplicity. Four steps and I'm out the door with glowing skin. The Lotus Recovery oil is my nighttime favourite."</p>
+            <p class="review-card__author">— Sara A.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ ABOUT STRIP ══════════════════════════════════════════ -->
+    <section class="about-strip section-pad" id="about">
+      <div class="container">
+        <div class="about-strip__grid">
+          <div class="about-strip__content fade-up">
+            <p class="eyebrow">Our Story</p>
+            <h2 class="about-strip__title">MADE IN CAIRO. BUILT FOR YOUR SKIN.</h2>
+            <p class="about-strip__body">Every bottle of Saha is formulated, tested, and bottled in Cairo. We combine ancient wisdom from the Nile Valley with modern clinical standards to create skin care that works for everyone.</p>
+            <a href="#" class="underline-link">Meet the team →</a>
+          </div>
+          <div class="about-strip__deco fade-up fade-up-delay-1" aria-hidden="true">SAHA</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ═══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__main">
+        <div>
+          <div class="footer__logo">SAHA</div>
+          <p class="footer__blurb">Radical simplicity for the modern skin ritual. Formulated in the heart of Cairo.</p>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Explore</p>
+          <nav class="footer__links">
+            <a href="shop.html" class="footer__link">Shop</a>
+            <a href="#ingredients" class="footer__link">Ingredients</a>
+            <a href="#about" class="footer__link">About</a>
+            <a href="#" class="footer__link">Contact</a>
+          </nav>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Support</p>
+          <nav class="footer__links">
+            <a href="#" class="footer__link">Shipping Policy</a>
+            <a href="#" class="footer__link">Returns</a>
+            <a href="#" class="footer__link">FAQ</a>
+            <a href="#" class="footer__link">Stockists</a>
+          </nav>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Join Us</p>
+          <p class="footer__subscribe-label">Subscribe for early access to collection drops and ritual guides.</p>
+          <form class="footer__subscribe-form" onsubmit="return false;">
+            <input type="email" class="footer__subscribe-input" placeholder="Email Address" aria-label="Email address for newsletter">
+            <button type="submit" class="footer__subscribe-btn" aria-label="Subscribe">
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2024 SAHA Egyptian Beauty. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social">Instagram</a>
+          <a href="#" class="footer__social">Pinterest</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

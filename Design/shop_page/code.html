@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shop All | SAHA Egyptian Beauty</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@800&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#6b6741",
+                    "error-container": "#fe8b70",
+                    "surface-tint": "#695d4a",
+                    "surface": "#fffcf7",
+                    "on-tertiary-container": "#605d38",
+                    "inverse-on-surface": "#9e9d98",
+                    "outline-variant": "#babab0",
+                    "surface-container": "#f6f4ec",
+                    "tertiary-fixed-dim": "#ece7b7",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#383831",
+                    "error-dim": "#5c1202",
+                    "on-secondary-fixed-variant": "#635a4c",
+                    "on-tertiary-fixed": "#4e4b27",
+                    "surface-container-low": "#fcf9f3",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#f0eee5",
+                    "surface-dim": "#e4e3d7",
+                    "background": "#fffcf7",
+                    "surface-container-highest": "#eae9de",
+                    "primary-fixed": "#f1e0c8",
+                    "on-surface-variant": "#64655d",
+                    "on-primary-container": "#5c503e",
+                    "secondary-dim": "#5f5749",
+                    "on-error-container": "#742410",
+                    "on-primary-fixed-variant": "#665a47",
+                    "secondary": "#6c6355",
+                    "primary-container": "#f1e0c8",
+                    "on-primary-fixed": "#483e2c",
+                    "on-secondary-fixed": "#463e31",
+                    "primary": "#695d4a",
+                    "primary-dim": "#5c513e",
+                    "tertiary-container": "#fbf5c4",
+                    "primary-fixed-dim": "#e3d2ba",
+                    "tertiary-fixed": "#fbf5c4",
+                    "on-background": "#383831",
+                    "secondary-container": "#ede1cf",
+                    "inverse-primary": "#fae9d0",
+                    "tertiary": "#69663f",
+                    "on-primary": "#fff6ee",
+                    "secondary-fixed-dim": "#dfd3c1",
+                    "secondary-fixed": "#ede1cf",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#a54731",
+                    "inverse-surface": "#0e0e0c",
+                    "tertiary-dim": "#5d5a34",
+                    "on-secondary-container": "#595143",
+                    "outline": "#818178",
+                    "surface-variant": "#eae9de",
+                    "surface-bright": "#fffcf7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 8px 32px rgba(56, 56, 49, 0.04);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-[#fffcf7]/80 backdrop-blur-md docked full-width top-0 sticky z-50 transition-colors duration-300">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-12">
+<a class="text-2xl font-extrabold tracking-tighter text-[#1A1A1A] font-['Space_Grotesk']" href="#">SAHA</a>
+<div class="hidden md:flex gap-8">
+<a class="text-[#1A1A1A] border-b border-[#7B6E5A] pb-1 font-['Inter'] font-semibold uppercase tracking-[0.15em] text-[10px] hover:text-[#7B6E5A] transition-colors duration-300" href="#">Shop</a>
+<a class="text-[#383831] font-medium font-['Inter'] font-semibold uppercase tracking-[0.15em] text-[10px] hover:text-[#7B6E5A] transition-colors duration-300" href="#">Ingredients</a>
+<a class="text-[#383831] font-medium font-['Inter'] font-semibold uppercase tracking-[0.15em] text-[10px] hover:text-[#7B6E5A] transition-colors duration-300" href="#">Rituals</a>
+<a class="text-[#383831] font-medium font-['Inter'] font-semibold uppercase tracking-[0.15em] text-[10px] hover:text-[#7B6E5A] transition-colors duration-300" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-6 text-[#7B6E5A]">
+<button class="material-symbols-outlined hover:text-[#1A1A1A] transition-colors" data-icon="search">search</button>
+<button class="material-symbols-outlined hover:text-[#1A1A1A] transition-colors" data-icon="shopping_bag">shopping_bag</button>
+</div>
+</div>
+</nav>
+<main class="max-w-[1440px] mx-auto px-8 pt-16 pb-24">
+<!-- Hero Header -->
+<header class="mb-20 text-center md:text-left">
+<span class="font-label font-semibold uppercase tracking-[0.15rem] text-[10px] text-primary mb-4 block">SHOP ALL</span>
+<h1 class="font-headline font-extrabold text-5xl md:text-7xl lg:text-8xl tracking-tighter text-on-surface leading-[0.9]">
+                THE BOTANICAL <br class="hidden md:block"/> COLLECTION
+            </h1>
+</header>
+<!-- Filters & Sort -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12 border-b border-outline-variant/20 pb-8">
+<div class="flex flex-wrap gap-12">
+<div class="group cursor-pointer">
+<p class="font-label text-[10px] font-semibold uppercase tracking-widest text-on-surface-variant mb-3">Category</p>
+<div class="flex items-center gap-2 group">
+<span class="font-body text-sm font-light">All Products</span>
+<span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<p class="font-label text-[10px] font-semibold uppercase tracking-widest text-on-surface-variant mb-3">Skin Concern</p>
+<div class="flex items-center gap-2">
+<span class="font-body text-sm font-light">Select Concern</span>
+<span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 cursor-pointer">
+<p class="font-label text-[10px] font-semibold uppercase tracking-widest text-on-surface-variant">Sort By</p>
+<div class="flex items-center gap-2">
+<span class="font-body text-sm font-light">Newest First</span>
+<span class="material-symbols-outlined text-sm" data-icon="unfold_more">unfold_more</span>
+</div>
+</div>
+</section>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-16">
+<!-- Product 1 -->
+<article class="group relative flex flex-col">
+<div class="aspect-square bg-surface-container-low overflow-hidden rounded-[3px] mb-6 relative">
+<img alt="Nile Rose Radiance Serum" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Minimalist frosted glass serum bottle with rose oil on a warm limestone surface with soft afternoon sunlight and shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfAkcQiCTyweJ4NrwA0C2I-lfVTGyxWjFg0UdLUYfu19YSA5pK1bRgsJtrAF2vo-GCwmoFbQbvFj4QC0rWM7VOXp38wpQYetRMyVQU2S_-7vmmDEgc-b6P0ci3vjhQ4Qhi0DN8vO5ZzESO_z1_7COR_TbsCBLrGa9lsyLZo62qajRdawtKKLnijOky9Cs19QjXr47OEtOzMtch33oa2-z17oi5GtUoivToy2H5IlHDFkJV9hgKx2he5d_Nrd45yDb_O7OHR58uIRhw"/>
+<button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-on-surface text-surface py-3 px-8 text-[10px] font-semibold uppercase tracking-widest opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 whitespace-nowrap rounded-[3px]">
+                        Quick Add
+                    </button>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label text-[9px] font-semibold uppercase tracking-widest text-primary">Serums</span>
+<h3 class="font-headline font-extrabold text-lg text-on-surface leading-tight tracking-tight">Nile Rose Radiance Serum</h3>
+<p class="font-body text-sm font-light text-on-surface-variant mt-2">$85.00</p>
+</div>
+</article>
+<!-- Product 2 -->
+<article class="group relative flex flex-col">
+<div class="aspect-square bg-surface-container-low overflow-hidden rounded-[3px] mb-6 relative">
+<img alt="Desert Dew Barrier Cream" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Rich white facial cream in a heavy amber glass jar placed on a textured beige ceramic tray with dried botanical leaves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8XGS7Mf3thqVLmtx0ukAxf99URr__G-hcfQAzjApuXHSkTociYpvdQfTnvddhMf48YOLVOYQ6HSq54iHUef2CyuE3rKDN-dh5twWKNpfWhKMBHFdY6oVUgYpDR05wpNFZQ5nJdPnhaPjnIc9B_hY-tgD6-vY162KJ-xvrPmPMA4wkZBkbeREmPyXyn-uWxt-38GPboC1VHOapoWexjhU6dyrtRVqMRGX6EwytqlOwPfiEeH1KE3_VL-gsyJ1i-Jh3eczy_5abTmZc"/>
+<button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-on-surface text-surface py-3 px-8 text-[10px] font-semibold uppercase tracking-widest opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 whitespace-nowrap rounded-[3px]">
+                        Quick Add
+                    </button>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label text-[9px] font-semibold uppercase tracking-widest text-primary">Moisturizers</span>
+<h3 class="font-headline font-extrabold text-lg text-on-surface leading-tight tracking-tight">Desert Dew Barrier Cream</h3>
+<p class="font-body text-sm font-light text-on-surface-variant mt-2">$72.00</p>
+</div>
+</article>
+<!-- Product 3 -->
+<article class="group relative flex flex-col">
+<div class="aspect-square bg-surface-container-low overflow-hidden rounded-[3px] mb-6 relative">
+<img alt="Black Seed Foam Wash" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Sleek dark glass pump bottle for facial cleanser standing on a wet marble slab with soft ripples of water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArj2AepnD00PjrT3-GOE4NsbK2J8qctsYCD2nhzZ7GtNYgDYloEBw1M5Z-bVI58_IPeyO5BuDoAUTwneDqk0uyniX--qoU4F82GyidCSj1ZCMJofKpONnJvq4ICV9WvcZnxwxScgcb7ckmddTUeJUxKTO6lrdQqTcyZqF7txpjLyL9KUL69uC6YbxyAdlOmRZH-GQIFaokwKUFOft09OoTXyc87TfCV-UuHPnm9XNJCNpOeD3xX5Khq0PAfwy_RHT2dB8gZSMhr-P3"/>
+<button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-on-surface text-surface py-3 px-8 text-[10px] font-semibold uppercase tracking-widest opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 whitespace-nowrap rounded-[3px]">
+                        Quick Add
+                    </button>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label text-[9px] font-semibold uppercase tracking-widest text-primary">Cleansers</span>
+<h3 class="font-headline font-extrabold text-lg text-on-surface leading-tight tracking-tight">Black Seed Foam Wash</h3>
+<p class="font-body text-sm font-light text-on-surface-variant mt-2">$45.00</p>
+</div>
+</article>
+<!-- Product 4 -->
+<article class="group relative flex flex-col">
+<div class="aspect-square bg-surface-container-low overflow-hidden rounded-[3px] mb-6 relative">
+<img alt="Khamsin Exfoliant Mask" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of a thick green clay mask in a ceramic bowl with a wooden spoon and desert sand in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAknEQcO3ZZHVJv7tZEb4SRIBExevNBtXt4GMEGd1o9BvC9oBfLUDFw5Dkl9IjE3GYDuQ8URYvLj1ipwXSPHabQgwW1gW1iGGt6ZHm_3cNniVLoz9HPhwQOtz6jVQKh9vnxtnnQQdJMvxVY7HGu7CMZayca_uZnVdQ6mphBmCrkAnPlxwFprrN7Znh4UitPfyqLCwtIAUJ3kMsz2R67LMpcO_FW76WIdGtNGsfU-AOP9yonO281LGAunk_H3aO7ng4Svd24wyqQpZO_"/>
+<button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-on-surface text-surface py-3 px-8 text-[10px] font-semibold uppercase tracking-widest opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 whitespace-nowrap rounded-[3px]">
+                        Quick Add
+                    </button>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label text-[9px] font-semibold uppercase tracking-widest text-primary">Masks</span>
+<h3 class="font-headline font-extrabold text-lg text-on-surface leading-tight tracking-tight">Khamsin Exfoliant Mask</h3>
+<p class="font-body text-sm font-light text-on-surface-variant mt-2">$60.00</p>
+</div>
+</article>
+<!-- Product 5 -->
+<article class="group relative flex flex-col">
+<div class="aspect-square bg-surface-container-low overflow-hidden rounded-[3px] mb-6 relative">
+<img alt="Lotus Recovery Oil" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Golden facial oil dropper bottle among pink lotus petals on a minimalist sandstone surface with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRh5myh0bj2gP-jzR044bSoH1tU-CD0PQvM8313UlTUxDxwHoltRErOekgP5_wjzgtydNcY-oIawSGu-V9ocgYkorNDuS4PX1EfZgIaIDEzkU0ABTweP4s-_5t5bVEl0pv3oZBtyvvnUCx-OSVn2aMcNHXO4uYOWfXLaX_A4FfqxAi4G3cHMckSBaRVmFnLbd7NE0HHHwRWNhukCusf5_3Q0UoS-OEzSLVZIrJmbT4q7K_hWBAMzBo98BRUI_PN_F8V-xJE-JSFRst"/>
+<button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-on-surface text-surface py-3 px-8 text-[10px] font-semibold uppercase tracking-widest opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 whitespace-nowrap rounded-[3px]">
+                        Quick Add
+                    </button>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label text-[9px] font-semibold uppercase tracking-widest text-primary">Face Oils</span>
+<h3 class="font-headline font-extrabold text-lg text-on-surface leading-tight tracking-tight">Lotus Recovery Oil</h3>
+<p class="font-body text-sm font-light text-on-surface-variant mt-2">$92.00</p>
+</div>
+</article>
+<!-- Product 6 -->
+<article class="group relative flex flex-col">
+<div class="aspect-square bg-surface-container-low overflow-hidden rounded-[3px] mb-6 relative">
+<img alt="Calendula Eye Balm" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Small round white tin of thick yellow eye balm on a minimal ivory background with dried calendula flowers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS2CYi0-ahONS9-DDqPhOYWrrYpkZFf44esxNSrbYb_7JhBuOlRkxX1CmS_Dm5xPO0gOBYpj8hoY1do1fAnKxoUWLM-s27sktn8vyIoHzUoNwuaPYjX8uynj53_F2Ou1JIhAWSi7sreXZbbvGNljorO3BgdHFYTRDOdVm7ei0mA0aWqAil9qTfAb2PJsYrSxlvWzMTYhy04f_crNzhFjIPb24fHKgrqK42hsbI5Fo2Yu6j7bVcQrWBmL8NR8KyXgGMa8aE5gRz-CRA"/>
+<button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-on-surface text-surface py-3 px-8 text-[10px] font-semibold uppercase tracking-widest opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 whitespace-nowrap rounded-[3px]">
+                        Quick Add
+                    </button>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label text-[9px] font-semibold uppercase tracking-widest text-primary">Eye Care</span>
+<h3 class="font-headline font-extrabold text-lg text-on-surface leading-tight tracking-tight">Calendula Eye Balm</h3>
+<p class="font-body text-sm font-light text-on-surface-variant mt-2">$54.00</p>
+</div>
+</article>
+<!-- Product 7 -->
+<article class="group relative flex flex-col">
+<div class="aspect-square bg-surface-container-low overflow-hidden rounded-[3px] mb-6 relative">
+<img alt="Papyrus Toning Mist" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A fine mist spray bottle against a soft parchment background with silhouettes of papyrus reeds" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbB8gdEPTxObL9xT3JEkWSYlKCIoEFH64Xca74L13DvNBLOcU_nimc2FxYKx7e99UbFLt17Sr5egGykPr861DMgO3PYCIapr2kS5iMiZlQnV_0b5a8ucbFITasQKzDGSmsK138f8CNQfkwr2u_EjKfrpRIeYDYRl0g0uc-umV4U0ff7kyfTjGj8e-goW9WSJrqPIUMWjPiq4MZOke0Kc-tC9k4JFZKXaJoCaMrMfZMh2Cl0TScqYI18AuZhOIU23sETiI1sHW2nhyK"/>
+<button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-on-surface text-surface py-3 px-8 text-[10px] font-semibold uppercase tracking-widest opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 whitespace-nowrap rounded-[3px]">
+                        Quick Add
+                    </button>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label text-[9px] font-semibold uppercase tracking-widest text-primary">Toners</span>
+<h3 class="font-headline font-extrabold text-lg text-on-surface leading-tight tracking-tight">Papyrus Toning Mist</h3>
+<p class="font-body text-sm font-light text-on-surface-variant mt-2">$38.00</p>
+</div>
+</article>
+<!-- Product 8 -->
+<article class="group relative flex flex-col">
+<div class="aspect-square bg-surface-container-low overflow-hidden rounded-[3px] mb-6 relative">
+<img alt="Jasmine Body Nectar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Tall elegant bottle of golden body oil with floating jasmine flowers on a clean off-white stone background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9v3LVWCXikvu4sfQqB-cnAsvhUht0eL8rX_Sd-d_qLvXkFRhLU6rHBYPN1TOh-NG6L7DexoCCtH_DDVtmmN-R4eZcObtH9fN8f34og2WZhd7WcWy5CXJAbbm8iL5Aaux37nkOzwwojMscr_rLWnoCz-NCYkhir2_zYcc6jQh2pRy2eoCm3GAVof9oE09alBl7Txbkm1K-JPLy2NHsOpCclDY12zKZTsyixaLOJlCeYvgrhsBY9IpKxbp3VcCJBhYEvgGU0k7ajZbl"/>
+<button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-on-surface text-surface py-3 px-8 text-[10px] font-semibold uppercase tracking-widest opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 whitespace-nowrap rounded-[3px]">
+                        Quick Add
+                    </button>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label text-[9px] font-semibold uppercase tracking-widest text-primary">Body Care</span>
+<h3 class="font-headline font-extrabold text-lg text-on-surface leading-tight tracking-tight">Jasmine Body Nectar</h3>
+<p class="font-body text-sm font-light text-on-surface-variant mt-2">$68.00</p>
+</div>
+</article>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-24 text-center">
+<button class="px-12 py-4 border border-outline-variant/30 font-label text-[10px] font-semibold uppercase tracking-widest hover:border-primary transition-colors rounded-[3px]">
+                Load More Rituals
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#fcf9f3] dark:bg-stone-900 border-t border-[#babab0]/20 full-width relative">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-[1440px] mx-auto">
+<div class="md:col-span-1">
+<div class="text-3xl font-extrabold text-[#1A1A1A] dark:text-stone-100 font-['Space_Grotesk'] mb-8">SAHA</div>
+<p class="font-['Inter'] font-light text-[#383831] dark:text-stone-400 max-w-xs leading-relaxed">Modern Egyptian beauty inspired by ancient botanical wisdom and the sun-drenched banks of the Nile.</p>
+</div>
+<div>
+<h4 class="font-['Inter'] font-semibold uppercase tracking-widest text-[10px] text-[#7B6E5A] mb-6">Explore</h4>
+<ul class="space-y-4">
+<li><a class="text-[#383831] dark:text-stone-400 font-['Inter'] font-light hover:translate-x-1 transition-transform duration-300 block" href="#">Shop</a></li>
+<li><a class="text-[#383831] dark:text-stone-400 font-['Inter'] font-light hover:translate-x-1 transition-transform duration-300 block" href="#">Ingredients</a></li>
+<li><a class="text-[#383831] dark:text-stone-400 font-['Inter'] font-light hover:translate-x-1 transition-transform duration-300 block" href="#">About</a></li>
+<li><a class="text-[#383831] dark:text-stone-400 font-['Inter'] font-light hover:translate-x-1 transition-transform duration-300 block" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-['Inter'] font-semibold uppercase tracking-widest text-[10px] text-[#7B6E5A] mb-6">Concierge</h4>
+<ul class="space-y-4">
+<li><a class="text-[#383831] dark:text-stone-400 font-['Inter'] font-light hover:translate-x-1 transition-transform duration-300 block" href="#">Shipping &amp; Returns</a></li>
+<li><a class="text-[#383831] dark:text-stone-400 font-['Inter'] font-light hover:translate-x-1 transition-transform duration-300 block" href="#">Privacy Policy</a></li>
+<li><a class="text-[#383831] dark:text-stone-400 font-['Inter'] font-light hover:translate-x-1 transition-transform duration-300 block" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-['Inter'] font-semibold uppercase tracking-widest text-[10px] text-[#7B6E5A] mb-6">The Journal</h4>
+<p class="font-['Inter'] font-light text-[#383831] dark:text-stone-400 mb-6 text-sm">Join our mailing list for curated rituals and early access.</p>
+<div class="flex">
+<input class="bg-transparent border-b border-[#babab0]/40 py-2 w-full focus:outline-none focus:border-[#7B6E5A] font-['Inter'] font-light text-sm" placeholder="Email address" type="email"/>
+<button class="material-symbols-outlined text-[#7B6E5A] ml-2" data-icon="arrow_forward">arrow_forward</button>
+</div>
+</div>
+</div>
+<div class="px-12 py-8 max-w-[1440px] mx-auto border-t border-[#babab0]/10 flex justify-between items-center text-[10px] font-['Inter'] font-semibold uppercase tracking-widest text-[#7B6E5A]">
+<span>© 2024 SAHA Egyptian Beauty. All rights reserved.</span>
+<div class="flex gap-6">
+<a class="hover:text-[#1A1A1A] transition-colors" href="#">Instagram</a>
+<a class="hover:text-[#1A1A1A] transition-colors" href="#">Pinterest</a>
+</div>
+</div>
+</footer>
+</body></html>

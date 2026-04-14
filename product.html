@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nile Rose Radiance Serum — Saha</title>
+  <meta name="description" content="SAHA's signature serum. Damask rose extract, hyaluronic acid and niacinamide — concentrated botanical intelligence for luminous, even-toned skin. Formulated in Cairo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/saha.css">
+</head>
+<body>
+
+  <!-- ══ NAVIGATION ══════════════════════════════════════════ -->
+  <nav class="nav" id="main-nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">SAHA</a>
+
+      <div class="nav__links">
+        <a href="shop.html" class="nav__link nav__link--active">Shop</a>
+        <a href="index.html#ingredients" class="nav__link">Ingredients</a>
+        <a href="index.html#ritual" class="nav__link">Rituals</a>
+        <a href="index.html#about" class="nav__link">About</a>
+      </div>
+
+      <div class="nav__actions">
+        <button class="nav__icon-btn" id="nav-cart-btn" aria-label="Open shopping bag">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge" id="cart-count">0</span>
+        </button>
+        <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav__mobile-menu">
+      <a href="shop.html" class="nav__mobile-link">Shop</a>
+      <a href="index.html#ingredients" class="nav__mobile-link">Ingredients</a>
+      <a href="index.html#ritual" class="nav__mobile-link">Rituals</a>
+      <a href="index.html#about" class="nav__mobile-link">About</a>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div style="background:var(--color-bg);padding:1rem 0;border-bottom:1px solid var(--color-outline-var);">
+    <div class="container" style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-muted);">
+      <a href="index.html" style="color:var(--color-muted);text-decoration:none;">Home</a>
+      <span style="margin-inline:0.5rem;">·</span>
+      <a href="shop.html" style="color:var(--color-muted);text-decoration:none;">Shop</a>
+      <span style="margin-inline:0.5rem;">·</span>
+      <span style="color:var(--color-primary);">Nile Rose Radiance Serum</span>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ══ PRODUCT DETAIL ══════════════════════════════════════ -->
+    <section class="product-page">
+      <div class="container">
+        <div class="product-page__grid">
+
+          <!-- ── LEFT: Gallery ─────────────────────────────── -->
+          <div class="fade-up">
+            <div class="product-gallery__main" id="product-gallery-main">
+              <img
+                id="product-main-img"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAQXBT5HJL2q8i5LG6sj6pDRV2kl8SpymCRdvmcA3js4TFMnJV0-gHea3ilId9HZ3tsjHinrcyXDPHFCt78LCRrTtvwpJ8zkRG0QdUMlkEK1pNoLMor9VkTNhQ6LS2tJT5TjpQwTDf9dMcXlJbbAMhjPsQLjFca0o1OSyqz3KSkAG4B1uTJ7joLbHsWH_xnLnJEN8w9oSLgGl4T3qszC8-v1z_vr74kaL_uxH0lAzmZneoSfKUkeO1pz-1UcFXh6fdX6xgUcZfduqI"
+                alt="Nile Rose Radiance Serum — main product photo"
+                loading="eager"
+              >
+            </div>
+
+            <div class="product-gallery__thumbs">
+              <div class="product-gallery__thumb is-active">
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAQXBT5HJL2q8i5LG6sj6pDRV2kl8SpymCRdvmcA3js4TFMnJV0-gHea3ilId9HZ3tsjHinrcyXDPHFCt78LCRrTtvwpJ8zkRG0QdUMlkEK1pNoLMor9VkTNhQ6LS2tJT5TjpQwTDf9dMcXlJbbAMhjPsQLjFca0o1OSyqz3KSkAG4B1uTJ7joLbHsWH_xnLnJEN8w9oSLgGl4T3qszC8-v1z_vr74kaL_uxH0lAzmZneoSfKUkeO1pz-1UcFXh6fdX6xgUcZfduqI"
+                  alt="Nile Rose Serum — angle 1"
+                  loading="lazy"
+                >
+              </div>
+              <div class="product-gallery__thumb">
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHOmRClei86Wx5bV3molf8dRSRto26PckxtkPX-2SolwR-guSpF1gyLE7vVGzG0AGnufueIi8GCgllqu-7BVP76SMQEK6TuBlVuyr44j-mWW3DGT6KFdkPpcOo1lMMMEdd9GrVuFXddrjCsLaVoiZzATjokAo6W1qYHgHhOjGa6Prwkv3mJZZdvmKRm5GERBB2Bu_9_BH9FMg33JANM41lvZ55fO4-ipCdsgoRNlMuBj5bGhV4Dqt5pnd-EHqyJeS3NFkBELiUiM60"
+                  alt="Nile Rose Serum — dropper detail"
+                  loading="lazy"
+                >
+              </div>
+              <div class="product-gallery__thumb">
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsFxtPrSwbMXW1od04FNm-0smLOlup2B61KU_9HddJZXPKLHrWHEtrnFmbNHNgcy2zdE7O4V_2MWrq4k9xPx6YTJomATmN9hcfrdkLutdCkWK2D4k3R18Ft9kcjqR-uX7J_2Ua66qASVF4T8KDw_bQMPnclcDRnTN_BnqYg8Gpof6PjV-ssI7EzXHb-lusbjKbxl2w21xN-g-XqHw5F47J86Eyza-2zzac6IL31zXll-1B5VOh-Sjn7iHVPEVbW-5DWOruQgH2Vlyx"
+                  alt="Nile Rose Serum — Damask rose petals"
+                  loading="lazy"
+                >
+              </div>
+              <div class="product-gallery__thumb">
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGtyBOrxtOwDfi7xi7zqL__D7go4FIDBp60P-luc8s1qy56spt4nFtxm_WWElP-YGWx9y3KEB7Rc17bn_gtOu7vG5kg0z1d31V5-JFEsrOJhqrdA6cde7m-RCUvM-DMx5-M-nxaMViAgSedAz6lR6bjHCU9vEgGPl0kufYv4UiixqJ_CbBbJPmVjciHff7glB6uUJYjNdMc86ytk7-cFh9ObDdu3Tl_CxEocEubXVjIx_SaEOuZX7XWYk9trOFvaSROpEUapVFuQk6"
+                  alt="Nile Rose Serum — lifestyle"
+                  loading="lazy"
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- ── RIGHT: Product Info ────────────────────────── -->
+          <div class="fade-up fade-up-delay-1">
+
+            <p class="product-info__category">Serum</p>
+            <h1 class="product-info__title">NILE ROSE RADIANCE SERUM</h1>
+
+            <div class="product-info__meta">
+              <span class="product-info__price">EGP 480</span>
+              <div class="meta-divider"></div>
+              <div class="product-info__stars">
+                ★★★★<span style="opacity:0.35;">★</span>
+              </div>
+              <span class="product-info__review-count">(42 Reviews)</span>
+            </div>
+
+            <p class="product-info__desc">Unveil the luminous beauty of ancient botanicals. Our signature serum blends the rare Damask rose with modern science to restore your skin's natural glow and vitality.</p>
+
+            <div class="ingredient-tags">
+              <span class="ingredient-tag">Damask Rose Extract</span>
+              <span class="ingredient-tag">Hyaluronic Acid</span>
+              <span class="ingredient-tag">Niacinamide</span>
+            </div>
+
+            <!-- Size Selector -->
+            <div>
+              <span class="size-selector__label">Select Size</span>
+              <div class="size-options">
+                <button class="size-btn is-active" data-size="30ml">30ml</button>
+                <button class="size-btn" data-size="50ml">50ml</button>
+              </div>
+            </div>
+
+            <!-- Quantity -->
+            <div class="qty-wrap">
+              <span class="qty-label">Quantity</span>
+              <div class="product-qty-stepper">
+                <button class="product-qty-btn" id="product-qty-minus" aria-label="Decrease quantity">−</button>
+                <span class="product-qty-val" id="product-qty-val">1</span>
+                <button class="product-qty-btn" id="product-qty-plus" aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="product-ctas">
+              <button class="btn btn--primary btn--full btn--lg" id="add-to-cart-btn">
+                Add to Bag
+              </button>
+              <button class="wishlist-btn">
+                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                Add to Wishlist
+              </button>
+            </div>
+
+            <!-- Accordions -->
+            <div class="accordion-group">
+
+              <div class="accordion" data-default-open="true">
+                <button class="accordion__trigger" aria-expanded="true">
+                  <span class="accordion__trigger-label">Full Ingredients</span>
+                  <svg class="accordion__icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="accordion__body">
+                  <p class="accordion__content">
+                    Aqua (Water), Rosa Damascena Flower Water, Niacinamide, Glycerin, Pentylene Glycol, Sodium Hyaluronate, Aloe Barbadensis Leaf Juice Powder, Citric Acid, Sodium Benzoate, Potassium Sorbate.
+                  </p>
+                </div>
+              </div>
+
+              <div class="accordion">
+                <button class="accordion__trigger" aria-expanded="false">
+                  <span class="accordion__trigger-label">How To Use</span>
+                  <svg class="accordion__icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="accordion__body">
+                  <p class="accordion__content">
+                    Apply 3–4 drops to clean, damp skin morning and night. Gently press into the face and neck until absorbed. Follow with your preferred SAHA moisturiser for best results.
+                  </p>
+                </div>
+              </div>
+
+              <div class="accordion">
+                <button class="accordion__trigger" aria-expanded="false">
+                  <span class="accordion__trigger-label">Dermatologist Notes</span>
+                  <svg class="accordion__icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="accordion__body">
+                  <p class="accordion__content">
+                    Non-comedogenic and free from synthetic fragrances. Formulated at a pH of 5.5 to maintain the skin's natural moisture barrier. Suitable for all skin types including sensitive skin.
+                  </p>
+                </div>
+              </div>
+
+              <div class="accordion">
+                <button class="accordion__trigger" aria-expanded="false">
+                  <span class="accordion__trigger-label">Shipping &amp; Returns</span>
+                  <svg class="accordion__icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="accordion__body">
+                  <p class="accordion__content">
+                    Free standard shipping on all orders over EGP 500. Orders dispatch within 1–2 business days from our Cairo warehouse. Returns accepted within 14 days of receipt for unopened products.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ RELATED PRODUCTS ════════════════════════════════ -->
+        <section class="related">
+          <div class="related__header">
+            <div>
+              <p class="eyebrow" style="margin-bottom:0.75rem;">Complete the Ritual</p>
+              <h2 class="related__title">YOU MAY ALSO LOVE</h2>
+            </div>
+            <a href="shop.html" class="related__view-all">View all products →</a>
+          </div>
+
+          <div class="related-grid">
+            <article class="product-card fade-up">
+              <div class="product-card__image-wrap" style="aspect-ratio:4/5;">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuArj2AepnD00PjrT3-GOE4NsbK2J8qctsYCD2nhzZ7GtNYgDYloEBw1M5Z-bVI58_IPeyO5BuDoAUTwneDqk0uyniX--qoU4F82GyidCSj1ZCMJofKpONnJvq4ICV9WvcZnxwxScgcb7ckmddTUeJUxKTO6lrdQqTcyZqF7txpjLyL9KUL69uC6YbxyAdlOmRZH-GQIFaokwKUFOft09OoTXyc87TfCV-UuHPnm9XNJCNpOeD3xX5Khq0PAfwy_RHT2dB8gZSMhr-P3" alt="Black Seed Foam Wash" loading="lazy">
+                <button class="product-card__quick-add" onclick="cart.addItem(3)">Quick Add</button>
+              </div>
+              <a href="product.html">
+                <p class="product-card__category">Cleanser</p>
+                <h3 class="product-card__name">Black Seed Foam Wash</h3>
+                <p class="product-card__price">EGP 290</p>
+              </a>
+            </article>
+
+            <article class="product-card fade-up fade-up-delay-1">
+              <div class="product-card__image-wrap" style="aspect-ratio:4/5;">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8XGS7Mf3thqVLmtx0ukAxf99URr__G-hcfQAzjApuXHSkTociYpvdQfTnvddhMf48YOLVOYQ6HSq54iHUef2CyuE3rKDN-dh5twWKNpfWhKMBHFdY6oVUgYpDR05wpNFZQ5nJdPnhaPjnIc9B_hY-tgD6-vY162KJ-xvrPmPMA4wkZBkbeREmPyXyn-uWxt-38GPboC1VHOapoWexjhU6dyrtRVqMRGX6EwytqlOwPfiEeH1KE3_VL-gsyJ1i-Jh3eczy_5abTmZc" alt="Desert Dew Barrier Cream" loading="lazy">
+                <button class="product-card__quick-add" onclick="cart.addItem(2)">Quick Add</button>
+              </div>
+              <a href="product.html">
+                <p class="product-card__category">Moisturiser</p>
+                <h3 class="product-card__name">Desert Dew Barrier Cream</h3>
+                <p class="product-card__price">EGP 360</p>
+              </a>
+            </article>
+
+            <article class="product-card fade-up fade-up-delay-2">
+              <div class="product-card__image-wrap" style="aspect-ratio:4/5;">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRh5myh0bj2gP-jzR044bSoH1tU-CD0PQvM8313UlTUxDxwHoltRErOekgP5_wjzgtydNcY-oIawSGu-V9ocgYkorNDuS4PX1EfZgIaIDEzkU0ABTweP4s-_5t5bVEl0pv3oZBtyvvnUCx-OSVn2aMcNHXO4uYOWfXLaX_A4FfqxAi4G3cHMckSBaRVmFnLbd7NE0HHHwRWNhukCusf5_3Q0UoS-OEzSLVZIrJmbT4q7K_hWBAMzBo98BRUI_PN_F8V-xJE-JSFRst" alt="Lotus Recovery Oil" loading="lazy">
+                <button class="product-card__quick-add" onclick="cart.addItem(5)">Quick Add</button>
+              </div>
+              <a href="product.html">
+                <p class="product-card__category">Treatment</p>
+                <h3 class="product-card__name">Lotus Recovery Oil</h3>
+                <p class="product-card__price">EGP 520</p>
+              </a>
+            </article>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ═══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__main">
+        <div>
+          <div class="footer__logo">SAHA</div>
+          <p class="footer__blurb">Elevating Egyptian beauty traditions through modern botanical alchemy.</p>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Discover</p>
+          <nav class="footer__links">
+            <a href="shop.html" class="footer__link">Shop</a>
+            <a href="index.html#ingredients" class="footer__link">Ingredients</a>
+            <a href="index.html#ritual" class="footer__link">Rituals</a>
+          </nav>
+        </div>
+
+        <div>
+          <p class="footer__col-title">About</p>
+          <nav class="footer__links">
+            <a href="#" class="footer__link">Our Story</a>
+            <a href="#" class="footer__link">Contact</a>
+            <a href="#" class="footer__link">Sustainability</a>
+          </nav>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Journal</p>
+          <p class="footer__subscribe-label">Join our community for exclusive early access and rituals.</p>
+          <form class="footer__subscribe-form" onsubmit="return false;">
+            <input type="email" class="footer__subscribe-input" placeholder="Email Address" aria-label="Email address">
+            <button type="submit" class="footer__subscribe-btn" aria-label="Subscribe">
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2024 SAHA Egyptian Beauty. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social">Instagram</a>
+          <a href="#" class="footer__social">Pinterest</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
